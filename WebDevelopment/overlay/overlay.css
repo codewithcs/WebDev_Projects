@@ -15,7 +15,7 @@ h1 {
     position: absolute; 
     top: 6px;
     right: 50px;
-    z-index: 999; /* Stack order */
+    z-index: 999; /* Stack order */   
 }
 .button a {
     text-decoration: none; /* remove the underline from the anchor */ 
@@ -51,7 +51,7 @@ h1 {
     top : 0 ;
     height : 100% ; 
     width : 100% ; 
-    background : #f2d50a ;  
+    background : #f2d50a ;    /* Doubt here. Check on udemy.com adding background and opacity = 1 hides the h1. Why ? */
 }
 
 .container {
