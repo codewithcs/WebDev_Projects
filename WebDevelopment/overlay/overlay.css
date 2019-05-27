@@ -12,7 +12,7 @@ h1 {
 
 .button {    
     font-size: 50px;
-    position: absolute;
+    position: absolute; 
     top: 6px;
     right: 50px;
     z-index: 999; /* Stack order */
@@ -23,7 +23,8 @@ h1 {
 
 .btn-open:after {
     font-family: "FontAwesome";
-    content:"\f0c9"; /* after allow us to add content after the content of selected element. Unicode for the open icon */
+    
+    content:"\f039";  /* after allow us to add content after the content of selected element. Unicode for the open icon */
     color: #333;
     transition: color .2s ;  /* smooth change of color after hovering on this element over the time delay */
 } 
@@ -35,7 +36,7 @@ h1 {
 
 .btn-close:after {
     font-family: "FontAwesome";
-    content:"\f00d";  /* Unicode for the close icon */
+    content:"\f057";                     /* Unicode for the close icon */
     color: #333;
     transition: color .2s;
 } 
@@ -53,30 +54,30 @@ h1 {
     background : #f2d50a ;  
 }
 
-.nav-container {
+.container {
     text-align: center ;
     width : 90% ;
     margin : 0 auto ;  
 }
 
-.nav-col{
+.col{
     padding : 200px 0px ;
     width : 24% ; 
     display : inline-block ;  /* this brings all the elements with nav-col on the same line. */ 
 }
 
-.nav-col div:first-child h2 {
+.col div:first-child h2 {
     font-size : 50px ; 
     color : #333 ; 
 }
 
 
-.nav-col div:nth-child(2) ul {
+.col div:nth-child(2) ul {
     padding : 0 ; 
     list-style : none ; /* removes the bullets from the list  */ 
 }
 
-.nav-col div:nth-child(2) ul li a {
+.col div:nth-child(2) ul li a {
 color : #f0f0f0 ; 
 font-size : 18px ; 
 display : block ; 
@@ -85,7 +86,7 @@ text-decoration: none ;
 transition : color .2s ; 
 } 
 
-.nav-col  div:nth-child(2) ul li a:hover {
+.col  div:nth-child(2) ul li a:hover {
     color : #1c9769 ;
 }
 
