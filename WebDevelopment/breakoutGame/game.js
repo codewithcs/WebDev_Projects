@@ -39,6 +39,7 @@ document.addEventListener( 'keydown' , function ( e) {
         paddle.right = true ; 
     } // move the paddle right 
 
+    else if ( key ===38 && !gameInPlay ) { gameinPlay = true ; }
 
 } ) ;
 
@@ -72,7 +73,7 @@ animationRepeat = requestAnimationFrame(update) ;
 
 gameOver = false ;
 
-gameInPlay = true ; 
+gameInPlay = false ; 
 
 } ; 
 
@@ -92,7 +93,7 @@ pCurrent += 5 ;
 
 paddle.style.left = pCurrent + 'px' ; 
 
-if ( !gameInPlay ){
+if ( !gameInPlay ){  // gameInPlay will change by pressing the up key 
 waitingOnPaddle() ;
 }
 else{
@@ -107,12 +108,17 @@ animationRepeat = requestAnimationFrame(update) ;
 }
 
 
+
+
 function waitingOnPaddle( ){
 ball.style.top = ( paddle.offsetTop - 21 ) + 'px' ; // dont forget 'px; 
 ball.style.left = ( paddle.offsetLeft + 70 ) + 'px' ; 
 }
 // This is called inside update() thats why ball moves along with paddle. 
 // paddle.offsetTop, etc also get changed. 
+
+
+
 
 function ballMove( ) {
 // move the ball when the game is in play. 
@@ -123,9 +129,28 @@ var y = ball.offsetTop ;
 if (  x < 0 || x > ( containerDim.width - 25 ) ) {
     ballDir[0] *= -1 ;
 } 
-if ( y > (containerDim.height-25) || y < 0 ){
+if ( y > (containerDim.height-25) || y < 0 ) {
+   
+    if ( y > ( containerDim.height -25 ) ) {
+        fallOffEdge() ;
+        return ; 
+    }
     ballDir[1] *= -1 ;
 }
+// origin for x,y : top left of the container. 
+// going down : +ve y , going up : -ve y 
+
+// if there is a collision between ball and paddle
+// then set ballDir[0] and ballDir[1] accordingly. 
+
+if ( isCollide ( ball, paddle ) ) {
+var nDir = ( ( x - paddle.offsetLeft ) - ( paddle.offsetWidth / 2 ) ) / 10 ; 
+// dividing by 10 is useful for setting ballDir[0] ( for changing x coordinate ) 
+
+ballDir[0] = nDir ;
+ballDir[1] *= -1 ; 
+}
+
 
 x = x + ballDir[0] ;
 y = y + ballDir[1] ; 
@@ -137,7 +162,38 @@ ball.style.left = x + 'px' ;  // Don't forget 'px' when assigning css property
 
 
 
-function isCollide ( a, b ){ 
+function isCollide ( a, b ){ // checking collision of elements a and b. 
+
+    var aRect = a.getBoundingClientRect ;
+
+    var bRect = b.getBoundingClientRect ;
+
+// console.log ( aRect ) ; console.log ( bRect ) ;
+
+return ( ! ( aRect.bottom < bRect.top || aRect.top > bRect.bottom || 
+    aRect.right < bRect.left || aRect.left > bRect.right ) ) ;
 
 }
 
+function fallOffEdge ( ) {
+    lives-- ; 
+
+    if ( lives === 0 ) {
+       // endGame () ;
+    }
+
+lifeUpdater () ; 
+stopper () ; 
+
+}
+
+function stopper ( ) {
+    gameInPlay = false ; 
+    ballDir[0,-5] ; 
+    waitingOnPaddle () ; 
+    window.cancelAnimationFrame(animationRepeat) ; 
+}
+
+function lifeUpdater (){
+    document.querySelector('.lives').innerText = lives ; 
+}
