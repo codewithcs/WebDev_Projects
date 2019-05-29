@@ -8,6 +8,7 @@ var btn_start = document.querySelector ( '.startBtn' ) ;
 
 
 var score = 0 ; 
+
 var lives = 5 ;
 
 var gameOver = false  ;
@@ -39,7 +40,7 @@ document.addEventListener( 'keydown' , function ( e) {
         paddle.right = true ; 
     } // move the paddle right 
 
-    else if ( key ===38 && !gameInPlay ) { gameinPlay = true ; }
+    else if ( key ===38 && !gameInPlay ) { gameInPlay = true ; }
 
 } ) ;
 
@@ -65,6 +66,7 @@ document.addEventListener ( 'keyup' , function (e) {  // triggered when a key is
 
 function startGame (){
 
+
 document.querySelector('.gameOver').style.display = 'none' ; // hide the gameover element
 
 ball.style.display = 'block' ; // display ball as a block level element.
@@ -81,7 +83,7 @@ function update () {
 
 if ( gameOver === false ){
 
-var pCurrent = paddle.offsetLeft ;  // left end of the paddle ; also can see the right end 
+var pCurrent = paddle.offsetLeft ;  // left end of the paddle ; also can take the right end 
 
 if( paddle.left && pCurrent > 0 ) {  //paddle : global variable 
 pCurrent -= 5 ;
@@ -143,6 +145,7 @@ if ( y > (containerDim.height-25) || y < 0 ) {
 // if there is a collision between ball and paddle
 // then set ballDir[0] and ballDir[1] accordingly. 
 
+
 if ( isCollide ( ball, paddle ) ) {
 var nDir = ( ( x - paddle.offsetLeft ) - ( paddle.offsetWidth / 2 ) ) / 10 ; 
 // dividing by 10 is useful for setting ballDir[0] ( for changing x coordinate ) 
@@ -178,7 +181,7 @@ return ( ! ( aRect.bottom < bRect.top || aRect.top > bRect.bottom ||
 function fallOffEdge ( ) {
     lives-- ; 
 
-    if ( lives === 0 ) {
+   if ( lives === 0 ) {
        // endGame () ;
     }
 
