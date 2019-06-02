@@ -1,0 +1,56 @@
+body{
+    background-color : #232323 ; /* Check the height of body. */
+}
+
+.square {
+    width : 30% ; 
+    background : purple ; 
+    float : left; /* takes the element out of normal page flow. View the web page as 3D, what we see visually is 2D */
+    margin : 1.66% ;
+    padding-bottom:  30% ;  /* or we can set height */
+  
+}
+
+#container { 
+    margin : 0 auto ;  /* centres it */ 
+    /* 0 margin on top and bottom and auto on left and right. */
+
+    max-width : 600px ; 
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

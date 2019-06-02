@@ -42,7 +42,7 @@ background-color : white ;
 }
 
 
-.gameOver {
+.gameover {
 position: absolute ; 
 text-align : center ; 
 color : white ; 
@@ -61,6 +61,22 @@ font-size : 3em ;
 font-size :3em ; 
 }
 
+
+.brick {
+    position : absolute ;   /* can position anywhere */
+    top : 0 ;
+    left : 0 ;
+    width : 80px ; 
+
+    height : 50 px ;
+    padding : 5px ; 
+    color : white ;
+    box-shadow : 0px 1px 8px 0px black ; 
+    font-size : 1.9em ;
+
+    text-align : center ; 
+
+}
 
 
 
