@@ -19,6 +19,21 @@ body{
 
 }
 
+#message {
+color : red ; 
+}
+
+#stripe {
+    text-align : center ; 
+    height : 30px ; 
+    background-color:  white ;
+}
+
+#heading
+{
+    background-color: white ;
+}
+
 
 
 

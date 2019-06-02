@@ -1,16 +1,19 @@
-var colors = [ 
-    "rgb(255, 0, 0)" , 
-    "rgb(255, 255, 0)", 
-    "rgb(0, 255, 0)" , 
-    "rgb(0, 255, 255)" ,
-    "rgb(0, 0, 255)" , 
-    "rgb(255, 0, 255)" ] 
+var colors = generateRandomColors(6) ;
+   // "rgb(255, 0, 0)" , 
+   // "rgb(255, 255, 0)", 
+   // "rgb(0, 255, 0)" , 
+   // "rgb(0, 255, 255)" ,
+   // "rgb(0, 0, 255)" , 
+   // "rgb(255, 0, 255)" ] 
 
 var winningcolor = pickColor()  ;   /// create a winning color from the array randomly. 
 
 var displayColor = document.getElementById("displaycolor" ) ; 
 
 var messageDisplay = document.querySelector ( "#message" ) ; 
+
+var h1 = document.querySelector("h1") ; 
+
 
 displayColor.innerHTML = winningcolor ; 
 
@@ -31,16 +34,17 @@ squares[i].addEventListener ( "click" , function() {
   var clickedColor = this.style.background ; 
 
   if ( winningcolor === clickedColor ) {
-      messageDisplay.style.textContent  = "Correct" ; 
+      messageDisplay.innerHTML  = "Correct" ; 
       //alert("Winner") ; 
 
          changeColors ( winningcolor ) ; 
       
+      h1.style.background = winningcolor ;    
 
   }
   else {
       this.style.background = "#232323" ;
-      messageDisplay.textContent = "Try Again" ; 
+      messageDisplay.innerHTML = "Try Again" ; 
   }
 
 }) ; 
@@ -55,7 +59,7 @@ function changeColors ( color ) {
     for ( var i=0 ; i < colors.length ; i++ ) {
         squares[i].style.background = color ; 
     }
-    
+
 }
 
 
@@ -66,9 +70,33 @@ return colors[random] ;
 }
 
 
+function generateRandomColors ( num ) {
+    // make an array of num random colors. 
+ var arr = [] ;
 
+for ( var i = 0 ; i < num ; i++ ) {
+ // get random color and push into array. 
+ arr.push ( randomColor() ) ;    
+}
 
+ return arr ;
 
+}
+
+function randomColor () {
+    
+// pick a "red" from 0 - 255
+var r = Math.floor ( Math.random() * 256 ) ; 
+
+// pick a "green" from 0 - 255
+var g = Math.floor ( Math.random() * 256 ) ;
+
+// pick a "blue" from 0 - 255
+var b = Math.floor ( Math.random() * 256 ) ;  // "rgb(r, g , b)"
+
+return "rgb(" + r + ", " + g + ", " + b + ")" ; // IMP: space should be there in between , and number
+
+}
 
 
 
